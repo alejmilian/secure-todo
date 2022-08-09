@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ToDo</title>
+        <link rel="stylesheet" href="bulma/bulma.min.css">
+    </head>
+    <body>
+        <section class="hero is-info is-fullheight">
+            <div class="hero-body">
+                <div class="container has-text-left">
+                    <p class="title is-size-1">
+                        {{status}}
+                    </p>
+                    <p class="subtitle">
+                    {{message}}
+                    </p>
+
+                    <article class="message is-family-code">
+                        <div class="message-header">
+                            <p>{{error.message}}</p>
+                        </div>
+                        <div class="message-body">
+                            {{error.header}}
+                            {{error.stack}}
+                        </div>
+                    </article>
+
+                    <a class="button mt-3 is-rounded" href={{url}}>Home</a>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
