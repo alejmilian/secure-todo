@@ -14,4 +14,10 @@ router.get('/books', function (req, res, next) {
   res.render('elements')
 })
 
+router.route('/user')
+  .get(function (req, res) {
+  })
+  .post(function (req, res) {
+  })
+
 module.exports = router

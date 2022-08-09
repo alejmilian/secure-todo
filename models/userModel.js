@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const bcrypt = require('bcrypt')
 
-module.exports = new Schema({
+const UserSchema = new Schema({
   name: {
     typeo: String,
     required: 'Enter name'
@@ -10,12 +11,19 @@ module.exports = new Schema({
     typeo: String,
     required: 'Enter a email'
   },
-  password: {
+  hashPassword: {
     typeo: String,
     required: 'Enter a password'
   },
   create_at: {
     type: Date,
     default: Date.now()
+  },
+  statics: {
+    comparePasswords (password, hashPassword) {
+      return bcrypt.compareSync(password, hashPassword)
+    }
   }
 })
+
+module.exports = UserSchema
