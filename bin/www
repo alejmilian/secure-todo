@@ -7,7 +7,7 @@
 const app = require('../app')
 const debug = require('debug')('secure-todo:server')
 const http = require('http')
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
 require('dotenv').config()
 
 /**
@@ -15,24 +15,32 @@ require('dotenv').config()
  */
 
 const port = normalizePort(process.env.PORT || '3000')
-const mongodbUrl = process.env.MONGODB_URL
+// const mongodbUrl = process.env.MONGODB_URL
 
 app.set('port', port)
 
-mongoose.connect(mongodbUrl).then(() => {
-  /**
-   * Create HTTP server.
-   */
-  const server = http.createServer(app)
+// mongoose.connect(mongodbUrl).then(() => {
+//   /**
+//    * Create HTTP server.
+//    */
+//   const server = http.createServer(app)
 
-  /**
-   * Listen on provided port, on all network interfaces.
-   */
-  server.listen(port)
-  server.on('error', onError)
-  server.on('listening', onListening(server))
-}).catch(err => console.error(err))
+//   /**
+//    * Listen on provided port, on all network interfaces.
+//    */
+//   server.listen(port)
+//   server.on('error', onError)
+//   server.on('listening', onListening(server))
+// }).catch(err => console.error(err))
 
+const server = http.createServer(app)
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+server.listen(port)
+server.on('error', onError)
+server.on('listening', onListening)
 /**
  * Normalize a port into a number, string, or false.
  */
@@ -85,7 +93,7 @@ function onError (error) {
  * Event listener for HTTP server "listening" event.
  */
 
-function onListening (server) {
+function onListening () {
   const addr = server.address()
   const bind = typeof addr === 'string'
     ? 'pipe ' + addr

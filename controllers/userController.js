@@ -5,16 +5,16 @@ const userSchema = require('../models/userModel')
 
 const User = mongoose.model('User', userSchema)
 
-module.exports = function addNewUser (req, res) {
-  const newUser = new User(req.body)
-
-  newUser.save((err, user) => {
-    if (err) res.send(err)
-    res.json(user)
-  })
-}
-
 module.exports = {
+
+  addNewUser (req, res) {
+    const newUser = new User(req.body)
+
+    newUser.save((err, user) => {
+      if (err) res.send(err)
+      res.json(user)
+    })
+  },
 
   getAllUsers (req, res) {
     User.find({}, (err, users) => {
@@ -51,5 +51,3 @@ module.exports = {
   }
 
 }
-
-console.log(module.exports)
