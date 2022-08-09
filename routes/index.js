@@ -1,23 +1,34 @@
 const express = require('express')
 const router = express.Router()
 
+const {
+  getAllUsers,
+  addNewUser,
+  getUserByEmail,
+  updateUser,
+  deleteUser
+} = require('../controllers/userController')
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('login')
 })
 
-router.get('/signup', function (req, res, next) {
-  res.render('signup')
-})
-
-router.get('/books', function (req, res, next) {
-  res.render('elements')
-})
-
-router.route('/user')
-  .get(function (req, res) {
+/* Signup page. */
+router.route('/signup')
+  .get(function (req, res, next) {
+    res.render('signup')
   })
-  .post(function (req, res) {
-  })
+  .post(addNewUser)
+
+/* User collection */
+router.route('/users')
+  .get(getAllUsers)
+
+/* User document */
+router.route('/users/user')
+  .get(getUserByEmail)
+  .put(updateUser)
+  .delete(deleteUser)
 
 module.exports = router
