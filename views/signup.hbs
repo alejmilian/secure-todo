@@ -7,25 +7,32 @@
                         <img class="is-fullwidth" src="/images/todo-logo-250x150.svg" alt="logo">
                     </div>
                 </div>
-                <form action="/signup" class="mx-2 my-2">
+                <form action="/signup"  method="post" class="mx-2 my-2">
+                    {{!-- {Name } --}}
+                    <div class="field">
+                        <label class="label" for="userName">Name</label>
+                        <div class="control">
+                            <input class="input" id="userName" name="userName" type="text" placeholder="e.g Alex Smith" required autofocus>
+                        </div>
+                    </div>
+                    {{!-- {Email } --}}
                     <div class="field">
                         <label class="label" for="email">Email</label>
                         <div class="control">
-                            <input class="input is-medium" type="email" placeholder="hello@example.com" autocomplete="username"
+                            <input class="input" id="email" name="email" type="email" placeholder="e.g hello@example.com" autocomplete="username"
                                 required />
                         </div>
                     </div>
+                    {{!-- {Password } --}}
                     <div class="field">
                         <label class="label" for="password">Password</label>
                         <div class="control">
-                            <input class="input is-medium" type="password" placeholder="**********" autocomplete="current-password"
+                            <input class="input" id="password" name="password" type="password" placeholder="**********" autocomplete="current-password"
                                 required />
                         </div>
                     </div>
                     <br>
-                    <button class="button is-block is-fullwidth is-info is-medium" type="submit">
-                        Create Account
-                    </button>
+                    <input class="button is-block is-fullwidth is-info is-medium" type="submit" value="Create Account">
                     <br>
                     <p class="is-size-5 has-text-centered">Have an account? <a href="/signup">Log In</a></p>
                 </form>

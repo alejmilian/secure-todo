@@ -8,8 +8,9 @@ const User = mongoose.model('User', userSchema)
 module.exports = {
 
   addNewUser (req, res) {
-    const newUser = new User(req.body)
-
+    const { userName, email, password: hashPassword } = req.body
+    const newUser = new User({ userName, email, hashPassword })
+    console.log(newUser)
     newUser.save((err, user) => {
       if (err) res.send(err)
       res.json(user)
